@@ -1,0 +1,25 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 06: TCP Chat Server ======",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha",
+    "lint": "eslint --fix lib/** index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meganrm/lab-06-tcp-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meganrm/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/meganrm/lab-06-tcp-server#readme",
+  "devDependencies": {
+    "eslint": "^4.8.0",
+    "mocha": "^4.0.0"
+  }
+}
