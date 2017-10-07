@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server/issues"
   },
-  "homepage": "https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server#readme"
+  "homepage": "https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server#readme",
+  "dependencies": {
+    "nodemon": "^1.12.1"
+  }
 }
