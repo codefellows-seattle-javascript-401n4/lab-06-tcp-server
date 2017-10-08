@@ -47,6 +47,14 @@ server.on('connection', (socket) => {
 
     }
 
+    if(text.startsWith('/quit')){
+      clientPool.forEach(socket => {
+        socket.socket.write(user.name + ' has disconnected.');
+      });
+      console.log(user.name + ' has disconnected')
+      socket.end();
+    }
+
     if(!text.startsWith(('/'))){
       console.log(user.name + `: ${text}`);
       clientPool.forEach(socket => {
