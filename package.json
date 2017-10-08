@@ -1,0 +1,24 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 06: TCP Chat Server ======",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyleeAndrews/lab-06-tcp-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyleeAndrews/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/RyleeAndrews/lab-06-tcp-server#readme",
+  "devDependencies": {
+    "lodash": "^4.17.4"
+  }
+}
