@@ -6,24 +6,55 @@ const port = 3000;
 
 let clientPool = [];
 
+function User(socket){
+  this.id;
+  this.name;
+  this.socket = socket;
+}
+
 server.on('connection', (socket) => {
 
-  clientPool.push(socket);
+  let user = new User(socket);
 
-  socket.username = `User ${(clientPool.indexOf(socket) + 1) }`;
+  clientPool.push(user);
+  user.id = `User ${(clientPool.indexOf(user))}`;
+  user.name = user.id;
+  console.log(`${user.name} has connected.`);
 
-  console.log(`${socket.username} has connected.`);
+  socket.write('Welcome to my chat room!');
 
   socket.on('data', (buffer) => {
 
     let text = buffer.toString();
 
-    // if(text.startswith('/name')){
-    //   socket.username = text.split(" ").slice(1).join(" ");
-    // };
+    if(text.startsWith('/name')){
+      user.name = text.trim().split(" ").slice(1).join(" ");
+      user.socket.write(`Name successfuly changed to ${user.name}`);
+    };
 
-    console.log(socket.username + ": " + text);
-  })
+    if(text.startsWith('/dm')){
+      let recipient = text.trim().split(" ").slice(1, 2).join(" ");
+      let directMessage = text.trim().split(" ").slice(2).join(" ");
+      let target;
+
+      clientPool.forEach(user => {
+        if(user.name === recipient){
+          target = user.socket;
+        }
+      });
+
+      target.write(user.name + `: ${directMessage}`);
+
+    }
+
+    if(!text.startsWith(('/'))){
+      console.log(user.name + `: ${text}`);
+      clientPool.forEach(socket => {
+        socket.socket.write(user.name + `: ${text}`);
+      });
+    }
+
+  });
 
 });
 
