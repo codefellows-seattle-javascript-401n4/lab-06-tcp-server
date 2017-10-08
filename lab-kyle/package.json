@@ -1,0 +1,26 @@
+{
+  "name": "lab-kyle",
+  "version": "0.0.1",
+  "description": "Lab-06",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krichey15/lab-06-tcp-server.git"
+  },
+  "author": "richey.kyle.i@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krichey15/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/krichey15/lab-06-tcp-server#readme",
+  "devDependencies": {
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1"
+  }
+}
