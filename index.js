@@ -32,7 +32,6 @@ server.on('connection', (socket) => {
       message.shift();
       message = message.join(' ');
       clientPool = clientPool.filter( (value) => value.nickname !== username);
-      console.log(clientPool);
       clientPool[1].socket.write(message);
     }
     else{
