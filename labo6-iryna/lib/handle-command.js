@@ -1,6 +1,7 @@
 'use strict';
 const net = require('net');
 module.exports = (buffer, socket, pool)=>{
+
   let text = buffer.toString();
   let tempName = socket.username;
   //  Use /nickname <something> to change my name
@@ -21,11 +22,13 @@ module.exports = (buffer, socket, pool)=>{
        findUser.map(ele=>ele.socket.write(`${socket.username} says: ${message}\n`));
        return pool;
   }
+
   // list
   if ( text.startsWith("/list")) {
     socket.write(`users online: \n ${pool.map(ele=>ele.socket.username)} \n`);
     return pool;
   }
+  
   // Outta Here!
   if ( text.startsWith("/quit")) {
       // delete your socket from the clientpool

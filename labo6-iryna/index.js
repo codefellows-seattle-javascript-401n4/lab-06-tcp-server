@@ -26,12 +26,11 @@ server.on('connection', (socket) => {
     socket.on('error',(err)=>{
       console.log('error: ', err);
     });
+
     socket.on('close',()=>{
       socketPool = command('/quit', socket, socketPool);
       console.log(socketPool);
     });
-    // socket.on('disconnect');
-
 
 });
 
