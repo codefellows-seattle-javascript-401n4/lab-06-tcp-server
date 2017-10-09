@@ -1,0 +1,24 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 06: TCP Chat Server ======",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server.git"
+  },
+  "author": "Paula Mookerjee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/codefellows-seattle-javascript-401n4/lab-06-tcp-server#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
+}
