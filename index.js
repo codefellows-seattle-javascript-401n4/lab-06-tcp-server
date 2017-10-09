@@ -15,14 +15,7 @@ server.on('connection', (socket) => {
     controller.data(buffer, socket);
   });
 
-
 });
 
 
-
 server.listen(3000, () => console.log('server up!'));
-
-
-
-
-// handle the .error and .disconnect - console.log who left, show list of new users
