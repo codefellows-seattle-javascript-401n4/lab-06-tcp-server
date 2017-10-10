@@ -14,13 +14,13 @@ as host you can:
 
 * Get the ip address from the host.
 * open the command line in linux.
-* type telnet <host ip address> 3000
+* type telnet host ip address 3000
 * press enter.
 
 as a client you can:
 * type a message then press enter to chat.
 * type /help to get a list of commands.
-* type /nickname <nickname> to change your name.
+* type /nickname nickname to change your name.
 * type /list to get a list of users.
-* type /whisper <username> <message> to send a private message to a user.
+* type /whisper username message to send a private message to a user.
 * type /quit to leave the server.
