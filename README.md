@@ -31,7 +31,7 @@ For this assignment you will be building a TCP chatroom. Clients should be able 
   * Each client instance should contain at least an `id`, `nickname`, and `socket`.
 * Clients should be able to send messages to all other clients by sending it to the server
 * Clients should be able to run special commands by sending messages that start with a command name
-  * The client should send `@quit` to disconnect
+  * The client should send `@quit` to disconnect DONE
   * The client should send `@list` to list all connectued users
   * The client should send `@nickname <new-name>` to change their nickname
   * The client should send `@dm <to-username> <message>` to  send a message directly to another user by nickname
