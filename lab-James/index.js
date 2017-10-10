@@ -3,6 +3,7 @@
 const net = require('net');
 const server = net.createServer();
 const port = 3000;
+const chat = require('./lib/chat.js');
 
 let clientPool = [];
 
@@ -26,56 +27,15 @@ server.on('connection', (socket) => {
   socket.on('data', (buffer) => {
 
     let text = buffer.toString();
+    let command;
 
-    if(text.startsWith('/name')){
-      user.name = text.trim().split(" ").slice(1).join(" ");
-      console.log(`${user.id} has changed name to ${user.name}`);
-      user.socket.write(`Name successfuly changed to ${user.name}\r\n`);
-    };
-
-    if(text.startsWith('/dm')){
-      let recipient = text.trim().split(" ").slice(1, 2).join(" ");
-      let directMessage = text.trim().split(" ").slice(2).join(" ");
-      let target;
-
-      clientPool.forEach(client => {
-        if(client.name === recipient){
-          target = client.socket;
-          console.log(`DM from ${user.name} to ${recipient}`);
-          target.write(user.name + `: ${directMessage}\r\n`);
-        }
-
-      });
-
-      if(target === undefined){
-        socket.write(`User not found.\r\n`);
-      }
-    }
-
-    if(text.startsWith('/quit')){
-      let index = clientPool.indexOf(user);
-      clientPool.splice(index, 1);
-
-      clientPool.forEach(client => {
-        client.socket.write(user.name + ` has disconnected.\r\n`);
-      });
-
-      console.log(user.name + ' has disconnected.')
-      socket.end();
-    }
-
-    if(text.startsWith('/list')){
-      console.log(`${user.name} listed all current users.`);
-      clientPool.forEach(client => {
-        socket.write(`${client.name}\r\n`);
-      });
+    if(text.startsWith('/')){
+      command = chat.command(text);
+      chat[command](user, text, clientPool);
     }
 
     if(!text.startsWith('/')){
-      console.log(user.name + `: ${text}`);
-      clientPool.forEach(client => {
-        client.socket.write(`${user.name}: ${text}\r\n`);
-      });
+      chat.talk(user, text, clientPool);
     }
 
   });
@@ -83,5 +43,5 @@ server.on('connection', (socket) => {
 });
 
 server.listen(port, () => {
-  console.log("Server up on port: ", port);
+  console.log('Server up on port: ', port);
 });
