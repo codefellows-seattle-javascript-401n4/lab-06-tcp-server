@@ -1,0 +1,25 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 06: TCP Chat Server ======",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint",
+    "start": "server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgordon834/lab-06-tcp-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sgordon834/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/sgordon834/lab-06-tcp-server#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
