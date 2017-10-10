@@ -1,5 +1,8 @@
 'use strict';
 
+//I need to rewrite prototypes so that they user this.property instead of the
+//passed client.property.
+
 //basic server construction
 const net = require('net');
 const port = 3000;
@@ -20,10 +23,10 @@ function Client (socket){
 Client.prototype.help = function(client, text) {
 
   if (text.startsWith('/help')) {
-    client.socket.write('Welcome! Here are the available commands:/r')
-    client.socket.write('/nickname <nickname> to set your nickname/r');
-    client.socket.write('/w <username> <message> to message a specific user/r');
-    client.socket.write('/quit to exit the server/r');
+    client.socket.write('Welcome! Here are the available commands:\r')
+    client.socket.write('/nickname <nickname> to set your nickname\r');
+    client.socket.write('/w <username> <message> to message a specific user\r');
+    client.socket.write('/quit to exit the server\r');
 
     // still implementing...
     // client.socket.write('/roll <number of sides> to roll the dice');
@@ -35,10 +38,10 @@ Client.prototype.help = function(client, text) {
 Client.prototype.list = function(client, text) {
 
   if (text.startsWith('/list')){
-    client.socket.write('Users currently logged in: ')
+    client.socket.write('Users currently logged in: \r')
 
     clientPool.forEach(user => {
-      client.socket.write(user.username + '/r');
+      client.socket.write(user.username + '\r');
 
     });
   }
@@ -52,24 +55,27 @@ Client.prototype.nickname = function(client, text) {
     client.username = text.trim().split(' ').slice(1).join(' ');
 
     clientPool.forEach(user => {
-      user.socket.write(oldName + ' change their name to ' + client.username);
+      user.socket.write(oldName + ' change their name to ' + client.username + '\r');
 
     })
   }
 }
 
-//welcomes each user as they enter.
-Client.prototype.welcome = function(client) {
-  client.socket.write('Welcome! type /help for a list of commands.')
   //writes to each client so everyone sees one anothers' messages.
+Client.prototype.welcome = function(client) {
 
   clientPool.forEach(user => {
-    user.socket.write(client.username + ' has entered.')
+    user.socket.write(client.username + ' has entered.\r')
 
   })
 
+  //welcomes each user as they enter. Only the most recent connection
+  //recieves this traffic. :]
+  client.socket.write('Welcome! type /help for a list of commands.\r')
+
+
   //console log so host sees traffic.
-  console.log(client.username + ' has entered.');
+  console.log(client.username + ' has entered.\r');
 
 }
 
@@ -80,7 +86,7 @@ Client.prototype.quit = function(client, text){
 
     //lets each user know that the user is logging out.
     clientPool.forEach(user => {
-      user.socket.write(client.username + ' has logged out.')
+      user.socket.write(client.username + ' has logged out.\r')
 
     })
 
@@ -92,7 +98,7 @@ Client.prototype.quit = function(client, text){
 Client.prototype.message = function(client, text) {
 
   //console log so host can see messages and commands.
-  console.log(client.username, ':', text);
+  console.log(client.username, ':', text + '\r');
 
   //ensures user commands aren't logged publicly. Whisper should be private for
   //example.
@@ -108,7 +114,7 @@ Client.prototype.message = function(client, text) {
 
     //writing to each of our clients so they all recieve one another's message.
     clientPool.forEach(user => {
-      user.socket.write(client.username + ': ' + text);
+      user.socket.write(client.username + ': ' + text + '\r');
 
     });
   }
@@ -134,18 +140,18 @@ Client.prototype.whisper = function (client, text) {
     clientPool.forEach(user => {
 
       if (user.username === recipientName){
-        user.socket.write(client.username + ' whispered: ' + message);
+        user.socket.write(client.username + ' whispered: ' + message + '\r');
 
       }
     })
   }
 }
 
-//all of our prototypes can be called with this function.
+//all of our prototypes (except welcome) can be called with this function
 Client.prototype.initialize = function(client) {
+    client.welcome(client);
 
   client.socket.on('data', (buffer) => {
-
     let text = buffer.toString();
     client.message(client, text);
     client.whisper(client, text);
@@ -162,9 +168,6 @@ server.on('connection', (socket) => {
 
   let client = new Client(socket);
 
-  //welcoming needs to happen before anything else and is not included
-  //in the initialize function
-  client.welcome(client);
   client.initialize(client);
 
   //handles errors and disconnects.
