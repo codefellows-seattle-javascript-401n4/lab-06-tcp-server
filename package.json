@@ -1,0 +1,21 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "0.0.1",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) Lab 06: TCP Chat Server\r ======",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JBEpstein/lab-06-tcp-server.git"
+  },
+  "author": "Joel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JBEpstein/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/JBEpstein/lab-06-tcp-server#readme"
+}
