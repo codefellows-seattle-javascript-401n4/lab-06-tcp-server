@@ -9,7 +9,7 @@
 * Submit on canvas a question and observation, how long you spent, and a link to your pull request
 
 ## Configuration
-Configure the root of your repository with the following files and directories. Thoughfully name and organize any aditional configuration or module files.
+Configure the root of your repository with the following files and directories. Thoughfully name and organize any additional configuration or module files.
 * **README.md** - contains documentation
 * **.env** - contains env variables (should be git ignored)
 * **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file
@@ -31,7 +31,7 @@ For this assignment you will be building a TCP chatroom. Clients should be able 
   * Each client instance should contain at least an `id`, `nickname`, and `socket`.
 * Clients should be able to send messages to all other clients by sending it to the server
 * Clients should be able to run special commands by sending messages that start with a command name
-  * The client should send `@quit` to disconnect
+  * The client should send `@quit` to disconnect DONE
   * The client should send `@list` to list all connectued users
   * The client should send `@nickname <new-name>` to change their nickname
   * The client should send `@dm <to-username> <message>` to  send a message directly to another user by nickname
@@ -41,6 +41,8 @@ For this assignment you will be building a TCP chatroom. Clients should be able 
   * When a socket emits the `data` event, the data should be logged on the server and the commands below should be implemented
 
 ##  Documentation
+* to start server run nodemon to connect clients telnet xxx.xxx.x.xxx 3000
+
 In your README.md describe the exported values of each module you have defined. Every function description should include it's airty (expected number of paramiters), the expected data for each paramiter (data-type and limitations), and it's behavior (for both valid and invalued use). Feel free to write any additional information in your README.md.
 
 Also write documention for starting your server and connection using telnet. Write documentation for the chat room usage.
