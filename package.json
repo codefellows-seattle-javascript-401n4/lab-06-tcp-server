@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/DarDavis/lab-06-tcp-server/issues"
   },
-  "homepage": "https://github.com/DarDavis/lab-06-tcp-server#readme"
+  "homepage": "https://github.com/DarDavis/lab-06-tcp-server#readme",
+  "devDependencies": {
+    "expect": "^21.2.1",
+    "mocha": "^4.0.1"
+  }
 }
