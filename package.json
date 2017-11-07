@@ -1,0 +1,22 @@
+{
+  "name": "lab-06-tcp-server",
+  "version": "1.0.0",
+  "description": "tcp server",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namgungssi/lab-06-tcp-server.git"
+  },
+  "keywords": [
+    "[]"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/namgungssi/lab-06-tcp-server/issues"
+  },
+  "homepage": "https://github.com/namgungssi/lab-06-tcp-server#readme"
+}
