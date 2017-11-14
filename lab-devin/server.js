@@ -15,7 +15,7 @@ server.on('connection', (socket) => {
 
   clientPool = [...clientPool, client];
 
-  let handleDisconnect = () = {
+  let handleDisconnect = () => {
 
     clientPool.forEach(user => {
       user.socket.write(`${client.handle} has left the chat`);
@@ -52,7 +52,6 @@ server.on('connection', (socket) => {
       return;
     }
 
-    sendMessage(client, data);
   });
 });
 
