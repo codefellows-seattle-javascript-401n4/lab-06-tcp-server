@@ -49,5 +49,5 @@ server.on ('connected', (socket) => {
 
 
 server.listen (port, () => {
-  console.log ('server is on port : ', PORT);
+  console.log ('server is on port', PORT);
 });
