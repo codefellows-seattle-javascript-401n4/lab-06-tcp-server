@@ -3,8 +3,8 @@
 
 
 const net = require ('net');
-const server = net.createServer ();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
+const server = net.createServer();
 const message = require ('./lib/message.js');
 
 
