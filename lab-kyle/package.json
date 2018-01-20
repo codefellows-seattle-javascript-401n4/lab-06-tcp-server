@@ -2,7 +2,7 @@
   "name": "lab-kyle",
   "version": "0.0.1",
   "description": "Lab-06",
-  "main": "index.js",
+  "main": "server.js",
   "directories": {
     "test": "test"
   },
@@ -22,5 +22,8 @@
   "devDependencies": {
     "expect": "^21.2.1",
     "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "uuid": "^3.2.1"
   }
 }
