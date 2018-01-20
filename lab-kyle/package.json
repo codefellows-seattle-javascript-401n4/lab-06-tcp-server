@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/krichey15/lab-06-tcp-server#readme",
   "devDependencies": {
     "expect": "^21.2.1",
-    "mocha": "^4.0.1"
+    "jest": "^22.1.4"
   },
   "dependencies": {
     "uuid": "^3.2.1"
