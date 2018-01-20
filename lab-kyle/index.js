@@ -1,10 +1,22 @@
 'use strict';
 
 const net = require('net');
-const port = 3000;
-const server = net.createServer();
+const EE = require('events').EventEmitter;
+const ee = new EE();
+const Client = require('./model/client');
+const cmdParser = require('./lib/command-parser');
+const PORT = process.env.PORT || 3000;
+
+
+//export for testing
+const server = module.exports = net.createServer();
 
 let clientPool = [];
+
+ee.on('default', (client, string) => {
+  client.socket.write(`Not a command: ${sting.trim().split(' ', 1)}\n`);
+});
+
 
 server.on('connection', (socket) => {
 
@@ -27,7 +39,7 @@ server.on('connection', (socket) => {
 
     let data = buffer.toString();
     clientPool.forEach((connection) => {
-      connection.write(data);
+      connection.write(text);
     });
 
   }
