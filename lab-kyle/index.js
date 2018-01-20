@@ -4,9 +4,7 @@ const net = require('net');
 const EE = require('events').EventEmitter;
 const ee = new EE();
 const Client = require('./model/client');
-const cmdParser = require('./lib/command-parser');
 const PORT = process.env.PORT || 3000;
-
 
 //export for testing
 const server = module.exports = net.createServer();
