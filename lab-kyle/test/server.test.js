@@ -26,7 +26,9 @@ describe('server', function(){
     it('should write "hello" to client2 from client 1', function(done){
       let client1 = net.connect({port: 3000}, () => {
         client1.on('data', (data) => {
-          console.log(data.toString());
+          if(!data.toString().includes('is now present')){
+            expect(data.toString()).toMatch(/Hello/);
+          }
         });
       });
 

@@ -31,7 +31,7 @@ ee.on('@exit', (client) => {
 });
 
 server.on('connection', (socket) => {
-  let client = new Client();
+  let client = new Client(socket);
 
   clientPool.push(client);
   clientPool.forEach((c) => c.socket.write(`${client.nickname} is now present\n`));
@@ -43,6 +43,8 @@ server.on('connection', (socket) => {
     client.socket.end();
     delete clientPool[index];
   });
+
+  socket.on('error', console.error);
 
 });
 
